@@ -1,0 +1,24 @@
+<div class="example-container">
+  <h3>Welcome!<br>Please, Log in</h3>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Enter your email</mat-label>
+    <input matInput placeholder="example@example.com" [formControl]="email" required>
+    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Enter your password</mat-label>
+    <input matInput [type]="hide ? 'password' : 'text'">
+    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+  </mat-form-field>
+
+  <section class="buttons">
+    <button mat-raised-button color="primary" style="margin-right: 1em">Test Launch</button>
+    <button mat-raised-button color="primary" style="margin-left: 1em">Sign In</button>
+  </section>
+
+</div>
+
