@@ -1,3 +1,39 @@
 <app-header></app-header>
-<h1>Dashboard works!</h1>
+
+<mat-horizontal-stepper [linear]="isLinear">
+  <mat-step>
+    <ng-template matStepLabel>
+      <p (click)="setToDoPage()">TODO</p>
+    </ng-template>
+
+    <app-tasks></app-tasks>
+
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>
+      <p (click)="setInProgressPage()">In Progress</p>
+    </ng-template>
+
+    <app-tasks></app-tasks>
+
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>
+      <p (click)="setOnCheckingPage()">On Checking</p>
+      </ng-template>
+
+    <app-tasks></app-tasks>
+
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>
+      <p (click)="setDonePage()">Done</p>
+    </ng-template>
+
+    <app-tasks></app-tasks>
+
+  </mat-step>
+</mat-horizontal-stepper>
+
+
 <app-footer></app-footer>

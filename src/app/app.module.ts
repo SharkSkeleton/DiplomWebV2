@@ -29,6 +29,9 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
 import { ChatMessagingComponent } from './chats/chat-messaging/chat-messaging.component';
 import {MatSelectModule} from '@angular/material/select';
+import {MatStepperModule} from '@angular/material/stepper';
+import { TasksComponent } from './dashboard/tasks/tasks.component';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -45,6 +48,7 @@ import {MatSelectModule} from '@angular/material/select';
     SettingsComponent,
     FooterComponent,
     ChatMessagingComponent,
+    TasksComponent,
   ],
   imports: [
     BrowserModule,
@@ -63,6 +67,8 @@ import {MatSelectModule} from '@angular/material/select';
     MatSidenavModule,
     MatListModule,
     MatSelectModule,
+    MatStepperModule,
+    MatCardModule,
   ],
   providers: [HttpService],
   bootstrap: [AppComponent]
