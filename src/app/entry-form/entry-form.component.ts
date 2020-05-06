@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import {Component} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {User} from '../user';
 import {HttpService} from '../http.service';
@@ -19,8 +19,6 @@ export class EntryFormComponent {
   user = new User();
   role = '';
   routerLink = '';
-
-  @Output() messageEvent = new EventEmitter();
 
   getErrorMessage() {
     if (this.email.hasError('required')) {
