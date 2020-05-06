@@ -24,6 +24,7 @@ import { DocsComponent } from './docs/docs.component';
 import { ChecksComponent } from './checks/checks.component';
 import { AccountComponent } from './account/account.component';
 import { SettingsComponent } from './settings/settings.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { SettingsComponent } from './settings/settings.component';
     ChecksComponent,
     AccountComponent,
     SettingsComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
