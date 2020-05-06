@@ -25,6 +25,10 @@ import { ChecksComponent } from './checks/checks.component';
 import { AccountComponent } from './account/account.component';
 import { SettingsComponent } from './settings/settings.component';
 import { FooterComponent } from './footer/footer.component';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatListModule} from '@angular/material/list';
+import { ChatMessagingComponent } from './chats/chat-messaging/chat-messaging.component';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -40,6 +44,7 @@ import { FooterComponent } from './footer/footer.component';
     AccountComponent,
     SettingsComponent,
     FooterComponent,
+    ChatMessagingComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,6 +60,9 @@ import { FooterComponent } from './footer/footer.component';
     MatToolbarModule,
     MatMenuModule,
     FormsModule,
+    MatSidenavModule,
+    MatListModule,
+    MatSelectModule,
   ],
   providers: [HttpService],
   bootstrap: [AppComponent]
