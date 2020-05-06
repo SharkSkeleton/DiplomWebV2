@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
+import {User} from '../user';
+import {HttpService} from '../http.service';
 
 
 @Component({
@@ -8,16 +10,42 @@ import {FormControl, Validators} from '@angular/forms';
   styleUrls: ['./entry-form.component.css']
 })
 export class EntryFormComponent {
-  hide = true;
 
+  constructor(private httpService: HttpService) {}
+
+  hide = true;
   email = new FormControl('', [Validators.required, Validators.email]);
+  password = new FormControl('', [Validators.required]);
+  user = new User();
+  role = '';
+  routerLink = '';
+
+  @Output() messageEvent = new EventEmitter();
 
   getErrorMessage() {
     if (this.email.hasError('required')) {
-      return 'You must enter a value';
+      return 'Enter your email!';
     }
 
-    return this.email.hasError('email') ? 'Not a valid email' : '';
+    return this.email.hasError('email') ? 'Enter correct email' : '';
+  }
+
+  getPassErrorMessage() {
+    if (this.password.hasError('required')) {
+      return 'Enter your password!';
+    }
+  }
+
+  submit(user: User) {
+    this.httpService.postData(user)
+      .subscribe(
+        (data: User) => { this.role = data.role; this.routerLink = '/home'; },
+        error => console.log(error)
+      );
+  }
+
+  testBtn() {
+    this.role = 'guest';
   }
 
 }
