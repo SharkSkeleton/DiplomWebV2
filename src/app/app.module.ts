@@ -34,6 +34,9 @@ import { TasksComponent } from './dashboard/tasks/tasks.component';
 import {MatCardModule} from '@angular/material/card';
 import {CodeEditorModule} from '@ngstack/code-editor';
 import {MatTabsModule} from '@angular/material/tabs';
+import { ClassTreeComponent } from './workspace/class-tree/class-tree.component';
+import {MatTreeModule} from '@angular/material/tree';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -51,6 +54,7 @@ import {MatTabsModule} from '@angular/material/tabs';
     FooterComponent,
     ChatMessagingComponent,
     TasksComponent,
+    ClassTreeComponent,
   ],
   imports: [
     BrowserModule,
@@ -73,6 +77,8 @@ import {MatTabsModule} from '@angular/material/tabs';
     MatCardModule,
     CodeEditorModule,
     MatTabsModule,
+    MatTreeModule,
+    MatCheckboxModule,
   ],
   providers: [HttpService],
   bootstrap: [AppComponent]
