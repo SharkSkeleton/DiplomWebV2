@@ -10,8 +10,6 @@ export class WorkspaceComponent {
 
   constructor() { }
 
-  showFiller = false;
-
   theme = 'vs-light';
 
   content: string = 'public class Main {' +

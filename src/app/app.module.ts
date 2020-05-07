@@ -37,6 +37,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { ClassTreeComponent } from './workspace/class-tree/class-tree.component';
 import {MatTreeModule} from '@angular/material/tree';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { ContentsTreeComponent } from './docs/contents-tree/contents-tree.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     ChatMessagingComponent,
     TasksComponent,
     ClassTreeComponent,
+    ContentsTreeComponent,
   ],
   imports: [
     BrowserModule,
