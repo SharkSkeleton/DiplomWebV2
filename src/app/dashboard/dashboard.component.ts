@@ -23,6 +23,7 @@ export class DashboardComponent implements OnInit {
     this.secondFormGroup = this._formBuilder.group({
       secondCtrl: ['', Validators.required]
     });
+    this.setToDoPage();
   }
 
   setToDoPage() {
@@ -41,4 +42,20 @@ export class DashboardComponent implements OnInit {
     this.pageService.sendMessage('Done');
   }
 
+  public onStepChange(event: any): void {
+    switch (event.selectedIndex) {
+      case 0:
+        this.setToDoPage();
+        break;
+      case 1:
+        this.setInProgressPage();
+        break;
+      case 2:
+        this.setOnCheckingPage();
+        break;
+      case 3:
+        this.setDonePage();
+        break;
+    }
+  }
 }

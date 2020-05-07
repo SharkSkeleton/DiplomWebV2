@@ -1,9 +1,9 @@
 <app-header></app-header>
 
-<mat-horizontal-stepper [linear]="isLinear">
+<mat-horizontal-stepper [linear]="isLinear" (selectionChange)="onStepChange($event)">
   <mat-step>
     <ng-template matStepLabel>
-      <p (click)="setToDoPage()">TODO</p>
+        TODO
     </ng-template>
 
     <app-tasks></app-tasks>
@@ -11,7 +11,7 @@
   </mat-step>
   <mat-step>
     <ng-template matStepLabel>
-      <p (click)="setInProgressPage()">In Progress</p>
+        In Progress
     </ng-template>
 
     <app-tasks></app-tasks>
@@ -19,7 +19,7 @@
   </mat-step>
   <mat-step>
     <ng-template matStepLabel>
-      <p (click)="setOnCheckingPage()">On Checking</p>
+        On Checking
       </ng-template>
 
     <app-tasks></app-tasks>
@@ -27,13 +27,12 @@
   </mat-step>
   <mat-step>
     <ng-template matStepLabel>
-      <p (click)="setDonePage()">Done</p>
+        Done
     </ng-template>
 
     <app-tasks></app-tasks>
 
   </mat-step>
 </mat-horizontal-stepper>
-
 
 <app-footer></app-footer>

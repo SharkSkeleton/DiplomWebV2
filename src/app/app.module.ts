@@ -32,6 +32,8 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatStepperModule} from '@angular/material/stepper';
 import { TasksComponent } from './dashboard/tasks/tasks.component';
 import {MatCardModule} from '@angular/material/card';
+import {CodeEditorModule} from '@ngstack/code-editor';
+import {MatTabsModule} from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
@@ -69,6 +71,8 @@ import {MatCardModule} from '@angular/material/card';
     MatSelectModule,
     MatStepperModule,
     MatCardModule,
+    CodeEditorModule,
+    MatTabsModule,
   ],
   providers: [HttpService],
   bootstrap: [AppComponent]
