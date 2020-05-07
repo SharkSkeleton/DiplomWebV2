@@ -38,6 +38,8 @@ import { ClassTreeComponent } from './workspace/class-tree/class-tree.component'
 import {MatTreeModule} from '@angular/material/tree';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { ContentsTreeComponent } from './docs/contents-tree/contents-tree.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -81,8 +83,10 @@ import { ContentsTreeComponent } from './docs/contents-tree/contents-tree.compon
     MatTabsModule,
     MatTreeModule,
     MatCheckboxModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
-  providers: [HttpService],
+  providers: [HttpService, MatDatepickerModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

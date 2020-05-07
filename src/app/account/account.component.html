@@ -1,3 +1,57 @@
 <app-header></app-header>
-<h1>Account works!</h1>
+
+<div class="content">
+  <img mat-card-avatar src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu" class="round">
+
+  <div class="text-container">
+
+    <mat-form-field appearance="fill" class="pad">
+      <mat-label>Login</mat-label>
+      <input [disabled]="changes" matInput>
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="pad">
+      <mat-label>Password</mat-label>
+      <input [disabled]="changes" matInput>
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill" class="pad">
+      <mat-label>Name</mat-label>
+      <input [disabled]="changes" matInput>
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="pad">
+      <mat-label>Last Name</mat-label>
+      <input [disabled]="changes" matInput>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Sur Name</mat-label>
+      <input [disabled]="changes" matInput>
+    </mat-form-field>
+    <br>
+
+    <mat-form-field appearance="fill" class="pad">
+      <mat-label>Birth Date</mat-label>
+      <input matInput [disabled]="changes" [matDatepicker]="picker1" [formControl]="date">
+      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+      <mat-datepicker #picker1></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Select your city</mat-label>
+      <mat-select>
+        <mat-option [disabled]="changes" value="option" *ngFor="let city of cities">{{city}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <br>
+    <mat-form-field appearance="fill">
+      <mat-label>About you</mat-label>
+      <textarea [disabled]="changes" matInput></textarea>
+    </mat-form-field>
+    <br>
+    <button mat-raised-button color="primary" class="pad">Save</button>
+    <button mat-raised-button color="primary" (click)="doSomeChanges()">Change</button>
+  </div>
+
+</div>
+
 <app-footer></app-footer>
