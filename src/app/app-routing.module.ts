@@ -10,8 +10,14 @@ import {DashboardComponent} from './dashboard/dashboard.component';
 import {DocsComponent} from './docs/docs.component';
 import {SettingsComponent} from './settings/settings.component';
 import {WorkspaceComponent} from './workspace/workspace.component';
+import {AdminPanelComponent} from './admin-panel/admin-panel.component';
+import {AddUserComponent} from './admin-panel/add-user/add-user.component';
+import {ChangeUserComponent} from './admin-panel/change-user/change-user.component';
 
 const routes: Routes = [
+  { path: 'admin', component: AdminPanelComponent },
+  { path: 'add-user', component: AddUserComponent },
+  { path: 'change-user', component: ChangeUserComponent },
   { path: 'entry', component: EntryFormComponent},
   { path: 'home', component: HomeComponent },
   { path: 'account', component: AccountComponent },

@@ -1,3 +1,46 @@
 <app-header></app-header>
-<h1>Settings works!</h1>
+<div class="content">
+  <div class="text-container">
+
+    <mat-form-field appearance="fill" class="pad">
+      <mat-label>Project name</mat-label>
+      <input disabled matInput>ProjectToWriteUpdateSed
+    </mat-form-field>
+    <div>
+      <button mat-raised-button color="primary" (click)="openPns()" class="pad">Switch</button>
+      <button mat-raised-button color="primary" (click)="openPna()">Add</button>
+    </div>
+    <br>
+    <mat-form-field appearance="fill" class="pad">
+      <mat-label>Language</mat-label>
+      <input disabled matInput>Java
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="openLans()">Switch</button>
+    <br>
+    <mat-form-field appearance="fill" class="pad">
+      <mat-label>Template</mat-label>
+      <input disabled matInput>Maven
+    </mat-form-field>
+    <div>
+      <button mat-raised-button color="primary" (click)="openLibss()" class="pad">Switch</button>
+      <button mat-raised-button color="primary" (click)="openLibsa()">Add</button>
+    </div>
+    <br>
+    <mat-form-field appearance="fill" class="pad">
+      <mat-label>Start file</mat-label>
+      <input disabled matInput>Main.java
+    </mat-form-field>
+    <div>
+      <button mat-raised-button color="primary" (click)="openStarts()" class="pad">Switch</button>
+      <button mat-raised-button color="primary" (click)="openStarta()">Add</button>
+    </div>
+    <br>
+    <h3>New task creation</h3>
+    <div>
+      <button mat-raised-button color="primary" (click)="openStarta()">Add</button>
+    </div>
+
+  </div>
+
+</div>
 <app-footer></app-footer>

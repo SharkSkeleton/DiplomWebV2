@@ -40,6 +40,22 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import { ContentsTreeComponent } from './docs/contents-tree/contents-tree.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
+import { AddUserComponent } from './admin-panel/add-user/add-user.component';
+import { ChangeUserComponent } from './admin-panel/change-user/change-user.component';
+import { ChangeSomeDataComponent } from './admin-panel/change-user/change-some-data/change-some-data.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { BottomSheetComponent } from './workspace/bottom-sheet/bottom-sheet.component';
+import {MatBottomSheet} from '@angular/material/bottom-sheet';
+import { SettingsPopComponent } from './settings/settings-pop/settings-pop.component';
+import { PnsComponent } from './settings/pns/pns.component';
+import { PnaComponent } from './settings/pna/pna.component';
+import { LansComponent } from './settings/lans/lans.component';
+import { LibssComponent } from './settings/libss/libss.component';
+import { LibsaComponent } from './settings/libsa/libsa.component';
+import { StartsComponent } from './settings/starts/starts.component';
+import { StartaComponent } from './settings/starta/starta.component';
+import { CheckPopComponent } from './checks/check-pop/check-pop.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +75,20 @@ import {MatNativeDateModule} from '@angular/material/core';
     TasksComponent,
     ClassTreeComponent,
     ContentsTreeComponent,
+    AdminPanelComponent,
+    AddUserComponent,
+    ChangeUserComponent,
+    ChangeSomeDataComponent,
+    BottomSheetComponent,
+    SettingsPopComponent,
+    PnsComponent,
+    PnaComponent,
+    LansComponent,
+    LibssComponent,
+    LibsaComponent,
+    StartsComponent,
+    StartaComponent,
+    CheckPopComponent,
   ],
   imports: [
     BrowserModule,
@@ -85,8 +115,9 @@ import {MatNativeDateModule} from '@angular/material/core';
     MatCheckboxModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatDialogModule,
   ],
-  providers: [HttpService, MatDatepickerModule],
+  providers: [HttpService, MatDatepickerModule, MatBottomSheet],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

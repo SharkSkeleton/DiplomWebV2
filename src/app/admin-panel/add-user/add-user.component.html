@@ -1,0 +1,30 @@
+<app-admin-panel></app-admin-panel>
+
+<div class="content">
+  <img mat-card-avatar src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu" class="round">
+
+  <div class="text-container">
+
+    <mat-form-field appearance="fill">
+      <mat-label>Login</mat-label>
+      <input matInput>
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+      <mat-label>Password</mat-label>
+      <input matInput>
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+      <mat-label>Role</mat-label>
+      <mat-select>
+        <mat-option value="option" *ngFor="let role of roles">{{role}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br>
+    <button mat-raised-button color="primary">Add user</button>
+  </div>
+
+</div>
+
+<app-footer></app-footer>
