@@ -31,10 +31,10 @@ const TREE_DATA = {
         java: {
           'Main.java': null
         },
-        resources: {}
+        resources: {},
       },
       test: {
-        java: {}
+        java: {},
       }
     },
     target: {
@@ -42,7 +42,7 @@ const TREE_DATA = {
         'Main.class': null
       },
       generated_sources: {
-        annotation: {}
+        annotation: {},
       }
     }
   }

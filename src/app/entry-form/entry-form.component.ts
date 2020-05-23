@@ -35,7 +35,7 @@ export class EntryFormComponent {
   }
 
   submit(user: User) {
-    this.httpService.postData(user)
+    this.httpService.postAuthenticationData(user)
       .subscribe(
         (data: User) => { this.role = data.role; this.routerLink = '/home'; },
         error => console.log(error)
