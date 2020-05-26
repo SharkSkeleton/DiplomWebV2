@@ -1,17 +1,9 @@
-<h1 mat-dialog-title>Mishka</h1>
+<h1 mat-dialog-title>Current Language is Java</h1>
 <div mat-dialog-content>
-  <mat-form-field>
-    <mat-label>login</mat-label>
-    <input matInput [(ngModel)]="data.login">
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>password</mat-label>
-    <input matInput [(ngModel)]="data.password">
-  </mat-form-field>
   <mat-form-field appearance="fill">
-    <mat-label>Role</mat-label>
+    <mat-label>Language</mat-label>
     <mat-select>
-      <mat-option value="option" *ngFor="let role of roles">{{role}}</mat-option>
+      <mat-option value="option" *ngFor="let language of languages">{{language}}</mat-option>
     </mat-select>
   </mat-form-field>
 </div>

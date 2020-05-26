@@ -9,13 +9,11 @@ import {DialogData} from '../settings.component';
 })
 export class LansComponent implements OnInit {
 
-  roles = [
-    'Team-lead',
-    'Front-end-Developer',
-    'Back-end-Developer',
-    'Full-Stack-Developer',
-    'QA',
-    'Project-Manager',
+  languages = [
+    'Java',
+    'Python',
+    'NodeJs',
+    'AngularCLI',
   ];
   ngOnInit(): void {
   }
