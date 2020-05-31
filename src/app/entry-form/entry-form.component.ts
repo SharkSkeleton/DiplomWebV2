@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {User} from '../user';
 import {HttpService} from '../http.service';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -11,21 +12,19 @@ import {HttpService} from '../http.service';
 })
 export class EntryFormComponent {
 
-  constructor(private httpService: HttpService) {}
+  constructor(private httpService: HttpService, private router: Router) {}
 
   hide = true;
-  email = new FormControl('', [Validators.required, Validators.email]);
+  login = new FormControl('', [Validators.required]);
   password = new FormControl('', [Validators.required]);
   user = new User();
   role = '';
   routerLink = '';
 
   getErrorMessage() {
-    if (this.email.hasError('required')) {
-      return 'Enter your email!';
+    if (this.login.hasError('required')) {
+      return 'Enter your login!';
     }
-
-    return this.email.hasError('email') ? 'Enter correct email' : '';
   }
 
   getPassErrorMessage() {
@@ -34,16 +33,28 @@ export class EntryFormComponent {
     }
   }
 
+  some = (data) => {
+    this.role = data.role;
+    window.sessionStorage.setItem('id', data.id);
+    data.role === 'admin' ? this.router.navigate(['/admin']) : this.router.navigate(['home']);
+  }
+
   submit(user: User) {
+    // console.log(user);
     this.httpService.postAuthenticationData(user)
       .subscribe(
-        (data: User) => { this.role = data.role; this.routerLink = '/home'; },
+        (data: User) => { this.some(data); },
         error => console.log(error)
       );
+    // console.log('Spec');
   }
 
   testBtn() {
     this.role = 'guest';
+    window.sessionStorage.setItem('id', 'guest');
   }
 
 }
+
+
+// this.role = data.role; data.role === 'admin' ? this.routerLink = '/admin' : this.routerLink = '/home';

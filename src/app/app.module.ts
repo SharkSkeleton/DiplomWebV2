@@ -48,14 +48,12 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { BottomSheetComponent } from './workspace/bottom-sheet/bottom-sheet.component';
 import {MatBottomSheet} from '@angular/material/bottom-sheet';
 import { SettingsPopComponent } from './settings/settings-pop/settings-pop.component';
-import { PnsComponent } from './settings/pns/pns.component';
 import { PnaComponent } from './settings/pna/pna.component';
-import { LansComponent } from './settings/lans/lans.component';
-import { LibssComponent } from './settings/libss/libss.component';
 import { LibsaComponent } from './settings/libsa/libsa.component';
-import { StartsComponent } from './settings/starts/starts.component';
 import { StartaComponent } from './settings/starta/starta.component';
 import { CheckPopComponent } from './checks/check-pop/check-pop.component';
+import { AdminPanelHeaderComponent } from './admin-panel/admin-panel-header/admin-panel-header.component';
+import { AddUserAnswerComponent } from './admin-panel/add-user/add-user-answer/add-user-answer.component';
 
 @NgModule({
   declarations: [
@@ -81,14 +79,12 @@ import { CheckPopComponent } from './checks/check-pop/check-pop.component';
     ChangeSomeDataComponent,
     BottomSheetComponent,
     SettingsPopComponent,
-    PnsComponent,
     PnaComponent,
-    LansComponent,
-    LibssComponent,
     LibsaComponent,
-    StartsComponent,
     StartaComponent,
     CheckPopComponent,
+    AdminPanelHeaderComponent,
+    AddUserAnswerComponent,
   ],
   imports: [
     BrowserModule,
@@ -117,6 +113,7 @@ import { CheckPopComponent } from './checks/check-pop/check-pop.component';
     MatNativeDateModule,
     MatDialogModule,
   ],
+
   providers: [HttpService, MatDatepickerModule, MatBottomSheet],
   bootstrap: [AppComponent]
 })

@@ -1,6 +1,10 @@
 import {Component, OnDestroy} from '@angular/core';
 import {PageService} from '../page.service';
 import {Subscription} from 'rxjs';
+import {Task} from '../../task';
+import {HttpService} from '../../http.service';
+import {UrlSerializer} from '@angular/router';
+import {User} from '../../user';
 
 export interface DoneSection {
   title: string;
@@ -32,31 +36,26 @@ export class TasksComponent implements OnDestroy {
   message: string;
   subscription: Subscription;
 
-  constructor(private pageService: PageService) {
-    this.subscription = this.pageService.getMessage().subscribe(message => {
+  constructor(private pageService: PageService, private httpService: HttpService) {
+    this.pageService.getMessage().subscribe(message => {
       if (message) {
         this.message = message.text;
+        this.tasks = message.allTasks;
       } else {
         this.message = '';
+        this.tasks = null;
       }
     });
   }
 
-  todoTasks: EditableSection[] = [
-    { title: 'Mishka',
-      subtitle: 'Developer CSG',
-      content: ['Task#777:', '1. Create window', '2. Create buttons', '3. Test components'],
-      buttonLabel: 'Get',
-    },
-    { title: 'John Doe',
-      subtitle: 'Developer CSG',
-      content: ['Tasks:', '1. Task 1', '2. Task 2', '3. Task 3'],
-      buttonLabel: 'Get',
-    },
-    { title: 'John Doe',
-      subtitle: 'Developer CSG',
-      content: ['Tasks:', '1. Task 1', '2. Task 2', '3. Task 3'],
-      buttonLabel: 'Get',
+  tasks: Task[] = [
+    {
+      title: '',
+      description: '',
+      status: '',
+      author: '',
+      authorRole: '',
+      executor: '',
     },
   ];
 
@@ -98,6 +97,14 @@ export class TasksComponent implements OnDestroy {
   ];
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
+  }
+
+  onClickGet(task: Task) {
+    task.status = 'inProgress';
+    // tslint:disable-next-line:max-line-length
+    this.httpService.postGetAllDataAboutUser(window.sessionStorage.getItem('id')).subscribe( (data: User) => {task.executor = data.login; this.httpService.postUpdateTaskInProgress(task).subscribe(); window.location.reload(); } );
   }
 }

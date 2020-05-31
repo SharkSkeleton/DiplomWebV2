@@ -10,6 +10,8 @@ export class HomeComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    // alert(window.sessionStorage.getItem('id'));
+    // console.log(window.sessionStorage.getItem('id'));
   }
 
 }

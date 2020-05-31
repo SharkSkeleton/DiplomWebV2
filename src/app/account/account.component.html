@@ -6,49 +6,53 @@
   <div class="text-container">
 
     <mat-form-field appearance="fill" class="pad">
-      <mat-label>Mishka@mishka.com</mat-label>
-      <input [disabled]="changes" matInput>
+      <mat-label>Login</mat-label>
+      <input disabled matInput [(ngModel)]="user.login">
     </mat-form-field>
     <mat-form-field appearance="fill" class="pad">
       <mat-label>Password</mat-label>
-      <input [disabled]="changes" matInput>
+      <input disabled matInput [(ngModel)]="user.password">
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="pad">
+      <mat-label>Role</mat-label>
+      <input disabled matInput [(ngModel)]="user.role">
     </mat-form-field>
     <br>
     <mat-form-field appearance="fill" class="pad">
-      <mat-label>Mihail</mat-label>
-      <input [disabled]="changes" matInput>
+      <mat-label>Name</mat-label>
+      <input [disabled]="changes" matInput [(ngModel)]="user.name">
     </mat-form-field>
     <mat-form-field appearance="fill" class="pad">
-      <mat-label>Myagkiy</mat-label>
-      <input [disabled]="changes" matInput>
+      <mat-label>Last Name</mat-label>
+      <input [disabled]="changes" matInput [(ngModel)]="user.lastName">
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>Sur Name</mat-label>
-      <input [disabled]="changes" matInput>
+      <input [disabled]="changes" matInput [(ngModel)]="user.surName">
     </mat-form-field>
     <br>
 
     <mat-form-field appearance="fill" class="pad">
       <mat-label>Birth Date</mat-label>
-      <input matInput [disabled]="changes" [matDatepicker]="picker1" [formControl]="date">
+      <input matInput [disabled]="changes" [matDatepicker]="picker1" [formControl]="date" [(ngModel)]="user.birthDate">
       <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
       <mat-datepicker #picker1></mat-datepicker>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
       <mat-label>Select your city</mat-label>
-      <mat-select>
-        <mat-option [disabled]="changes" value="option" *ngFor="let city of cities">{{city}}</mat-option>
+      <mat-select [(ngModel)]="user.city">
+        <mat-option [disabled]="changes" *ngFor="let city of cities" [value]=city>{{city}}</mat-option>
       </mat-select>
     </mat-form-field>
 
     <br>
     <mat-form-field appearance="fill">
       <mat-label>About you</mat-label>
-      <textarea [disabled]="changes" matInput></textarea>
+      <textarea [disabled]="changes" matInput [(ngModel)]="user.about"></textarea>
     </mat-form-field>
     <br>
-    <button mat-raised-button color="primary" class="pad">Save</button>
+    <button mat-raised-button color="primary" class="pad" (click)="saveChanges(user)">Save</button>
     <button mat-raised-button color="primary" (click)="doSomeChanges()">Change</button>
   </div>
 

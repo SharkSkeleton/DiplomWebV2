@@ -2,38 +2,54 @@
 <div class="content">
   <div class="text-container">
 
-    <mat-form-field appearance="fill" class="pad">
-      <mat-label>Project name</mat-label>
-      <input disabled matInput>ProjectToWriteUpdateSed
-    </mat-form-field>
+    <div mat-dialog-content>
+      <mat-form-field appearance="fill">
+        <mat-label>Projects</mat-label>
+        <mat-select>
+          <mat-option value="option" *ngFor="let project of projects">{{project}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
     <div>
-      <button mat-raised-button color="primary" (click)="openPns()" class="pad">Switch</button>
       <button mat-raised-button color="primary" (click)="openPna()">Add</button>
     </div>
     <br>
-    <mat-form-field appearance="fill" class="pad">
-      <mat-label>Language</mat-label>
-      <input disabled matInput>Java
-    </mat-form-field>
-    <button mat-raised-button color="primary" (click)="openLans()">Switch</button>
-    <br>
-    <mat-form-field appearance="fill" class="pad">
-      <mat-label>Template</mat-label>
-      <input disabled matInput>Maven
-    </mat-form-field>
-    <div>
-      <button mat-raised-button color="primary" (click)="openLibss()" class="pad">Switch</button>
-      <button mat-raised-button color="primary" (click)="openLibsa()">Add</button>
+
+    <div mat-dialog-content>
+      <mat-form-field appearance="fill">
+        <mat-label>Language</mat-label>
+        <mat-select>
+          <mat-option value="option" *ngFor="let language of languages">{{language}}</mat-option>
+        </mat-select>
+      </mat-form-field>
     </div>
+
     <br>
-    <mat-form-field appearance="fill" class="pad">
-      <mat-label>Start file</mat-label>
-      <input disabled matInput>Main.java
-    </mat-form-field>
-    <div>
-      <button mat-raised-button color="primary" (click)="openStarts()" class="pad">Switch</button>
-      <button mat-raised-button color="primary" (click)="openStarta()">Add</button>
+    <div mat-dialog-content>
+      <mat-form-field appearance="fill">
+        <mat-label>Templates</mat-label>
+        <mat-select>
+          <mat-option value="option" *ngFor="let template of templates">{{template}}</mat-option>
+        </mat-select>
+      </mat-form-field>
     </div>
+<!--    <div>-->
+<!--      <button mat-raised-button color="primary" (click)="openLibsa()">Add</button>-->
+<!--    </div>-->
+    <br>
+
+    <div mat-dialog-content>
+      <mat-form-field appearance="fill">
+        <mat-label>Start file</mat-label>
+        <mat-select>
+          <mat-option value="option" *ngFor="let file of files">{{file}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+<!--    <div>-->
+<!--      <button mat-raised-button color="primary" (click)="openStarta()">Add</button>-->
+<!--    </div>-->
     <br>
     <h3>New task creation</h3>
     <div>

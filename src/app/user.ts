@@ -1,9 +1,18 @@
 export class User {
-  email: string;
+  login: string;
   password: string;
   role: string;
+  projects?: string[];
+  currentProject?: string;
+  tasks?: string;
+  commonTasks?: string;
+  messages?: string;
   name?: string;
-  lastName?: string;
   surName?: string;
+  lastName?: string;
+  birthDate?: string;
   city?: string;
+  about?: string;
+  picture?: string;
 }
+

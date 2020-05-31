@@ -1,19 +1,31 @@
-<mat-toolbar color="primary">
-  <mat-toolbar-row>
+<app-admin-panel-header></app-admin-panel-header>
 
-    <button mat-button style="margin-right: 1em" routerLink="/add-user">Add user</button>
-    <button mat-button style="margin-right: 1em" routerLink="/change-user">Change User</button>
-    <span class="example-spacer"></span>
+<div class="content">
 
-    <button mat-button>
-      <mat-icon>invert_colors</mat-icon>
-    </button>
-    <button mat-button routerLink="/entry">
-      Log Out <mat-icon>exit_to_app</mat-icon>
-    </button>
-  </mat-toolbar-row>
-</mat-toolbar>
+  <div layout="row" layout-xs="column" class="home-row homepage-container">
+    <img height="222" width="340" src="assets/screens/Chats.png" alt="responsive framework">
+    <div class="text-container">
+      <div class="text-block promo-1-desc l-pad-top-2">
+        <div class="text-headline" routerLink="/add-user">Add users Page</div>
+        <p class="text-body">It`s a place where you can create and add new users to the system.
+        </p>
+      </div>
+    </div>
+  </div>
 
+  <hr>
+  <div layout="row" layout-xs="column" class="home-row homepage-container">
+    <div class="text-container">
+      <div class="text-block promo-1-desc l-pad-top-2">
+        <div class="text-headline" routerLink="/change-user">Change users Page</div>
+        <p class="text-body">It`s a place where you can change or delete an existing users.
+        </p>
+      </div>
+    </div>
+    <img height="222" width="340" src="assets/screens/Dashboard.png" alt="responsive framework">
+  </div>
+  <hr>
 
+</div>
 
 <app-footer></app-footer>
