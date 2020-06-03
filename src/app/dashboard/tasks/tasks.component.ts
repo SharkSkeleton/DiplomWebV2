@@ -1,10 +1,11 @@
-import {Component, OnDestroy} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {PageService} from '../page.service';
 import {Subscription} from 'rxjs';
 import {Task} from '../../task';
 import {HttpService} from '../../http.service';
 import {UrlSerializer} from '@angular/router';
 import {User} from '../../user';
+import {SocketService} from '../../socket.service';
 
 export interface DoneSection {
   title: string;
@@ -31,12 +32,12 @@ export interface EditableSection {
   templateUrl: './tasks.component.html',
   styleUrls: ['./tasks.component.css']
 })
-export class TasksComponent implements OnDestroy {
+export class TasksComponent implements OnInit, OnDestroy {
 
   message: string;
   subscription: Subscription;
 
-  constructor(private pageService: PageService, private httpService: HttpService) {
+  constructor(private pageService: PageService, private httpService: HttpService, private socketService: SocketService) {
     this.pageService.getMessage().subscribe(message => {
       if (message) {
         this.message = message.text;
@@ -59,13 +60,24 @@ export class TasksComponent implements OnDestroy {
     },
   ];
 
-  inProgressTasks: EditableSection[] = [
-    { title: 'Mishka',
-      subtitle: 'Developer CSG',
-      content: ['Task#777:', '1. Create window', '2. Create buttons', '3. Test components'],
-      buttonLabel: 'Send to check',
-    },
-  ];
+  // inProgressTasks: Task[] = [
+  //   {
+  //     title: '',
+  //     description: '',
+  //     status: '',
+  //     author: '',
+  //     authorRole: '',
+  //     executor: '',
+  //   },
+  // ];
+
+  // inProgressTasks: EditableSection[] = [
+  //   { title: 'Mishka',
+  //     subtitle: 'Developer CSG',
+  //     content: ['Task#777:', '1. Create window', '2. Create buttons', '3. Test components'],
+  //     buttonLabel: 'Send to check',
+  //   },
+  // ];
 
   onCheckingTasks: Section[] = [
     { title: 'John Doe',
@@ -96,15 +108,70 @@ export class TasksComponent implements OnDestroy {
     },
   ];
 
+  ngOnInit(): void {
+    this.pageService.getMessage().subscribe(message => {
+      if (message) {
+        this.message = message.text;
+        this.tasks = message.allTasks;
+      } else {
+        this.message = '';
+        this.tasks = null;
+      }
+    });
+  }
+
   ngOnDestroy() {
     if (this.subscription) {
       this.subscription.unsubscribe();
     }
   }
 
+  onClickSend(task: Task) {
+    this.socketService.setOnCheckingPage(task, 'onChecking', window.sessionStorage.getItem('id')).subscribe(tasks => {
+      this.tasks = tasks;
+    });
+    // this.socketService.getOnCheckingTasks(task, 'readyForChecking');
+    // this.pageService.getMessage().subscribe(message => {
+    //   if (message) {
+    //     this.message = message.text;
+    //     this.tasks = message.allTasks;
+    //   } else {
+    //     this.message = '';
+    //     this.tasks = null;
+    //   }
+    // });
+  }
+
   onClickGet(task: Task) {
-    task.status = 'inProgress';
+    // task.status = 'inProgress';
+    // window.sessionStorage.getItem('id');
+    // task;
+    this.socketService.sendUserGetTask(task, 'inProgress', window.sessionStorage.getItem('id'));
+    this.pageService.getMessage().subscribe(message => {
+      if (message) {
+        this.message = message.text;
+        this.tasks = message.allTasks;
+      } else {
+        this.message = '';
+        this.tasks = null;
+      }
+    });
+
+
     // tslint:disable-next-line:max-line-length
-    this.httpService.postGetAllDataAboutUser(window.sessionStorage.getItem('id')).subscribe( (data: User) => {task.executor = data.login; this.httpService.postUpdateTaskInProgress(task).subscribe(); window.location.reload(); } );
+    // this.socketService.sendUserGetTask(window.sessionStorage.getItem('id'));
+    // tslint:disable-next-line:max-line-length
+
+
+
+    // this.httpService.postGetAllDataAboutUser(window.sessionStorage.getItem('id')).subscribe( (data: User) => {
+    //   task.executor = data.login;
+    //   this.httpService.postUpdateTaskInProgress(task).subscribe();
+    //   this.socketService.sendOnClick();
+    //   window.location.reload();
+    // } );
+
+
+    // this.socketService.sendOnClick();
   }
 }

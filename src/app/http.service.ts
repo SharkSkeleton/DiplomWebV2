@@ -72,4 +72,9 @@ export class HttpService {
     const body = { userTask: task };
     return this.http.post('http://localhost:3000/dashboard/in-progress/', body);
   }
+
+  postGetAllFilesOFProject(path) {
+    const body = { projectPath: path };
+    return this.http.post('http://localhost:3000/settings/', body);
+  }
 }

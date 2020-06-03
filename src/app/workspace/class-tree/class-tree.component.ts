@@ -276,4 +276,8 @@ export class ClassTreeComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  someClick(name) {
+    console.log(name);
+  }
+
 }

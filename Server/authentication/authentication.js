@@ -5,6 +5,13 @@ const jsonParser = express.json();
 const MongoClient = require('mongodb').MongoClient;
 const mongo = require('mongodb');
 const url = "mongodb://localhost:27017/";
+const fs = require('fs'),
+  glob = require("glob"),
+  path = '/Users/mihailmyagkiy/Desktop/DiplomaData/Project/';
+// const server = require('http').Server(app);
+// const io = require('socket.io')(server);
+
+// server.listen(80);
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -12,7 +19,6 @@ app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Methods", "GET, PATCH, PUT, POST, DELETE, OPTIONS");
   next();
 });
-
 // authentication
 app.post("/entry-form/", jsonParser, function (request, response) {
 
@@ -50,10 +56,7 @@ app.post("/admin-panel/add-user/", jsonParser, function (request, response) {
     login: request.body.login,
     password: request.body.password,
     role: request.body.role,
-    projects: [''],
-    currentProject: '',
-    tasks: '',
-    commonTasks: '',
+    currentProject: [],
     messages: '',
     name: '',
     surName: '',
@@ -216,7 +219,8 @@ app.post("/settings/add-task/", jsonParser, function (request, response) {
     status: request.body.userTask.status,
     author: request.body.userTask.author,
     authorRole: request.body.userTask.authorRole,
-    executor: ''
+    executor: '',
+    mark: ''
   };
 
   MongoClient.connect(url, function(err, db) {
@@ -233,65 +237,154 @@ app.post("/settings/add-task/", jsonParser, function (request, response) {
   });
 });
 
-// user get all tasks
-app.post("/dashboard/todo/", jsonParser, function (request, response) {
+// app.post("/settings/", jsonParser, function (request, response) {
+//
+//   if(!request.body) return response.sendStatus(400);
+//
+//   let getDirectories = function (src, callback) {
+//     glob(src + '/**/*', callback);
+//   };
+//   getDirectories(data.projectPath, function (err, res) {
+//     if (err) {
+//       console.log('Error', err);
+//     } else {
+//       let arr = [];
+//       res.forEach(el => {
+//         let str = el.replace(data.projectPath, '');
+//         if (str.indexOf(".") !== -1) {
+//           arr.push(str);
+//         }
+//       });
+//       response.json(arr);
+//     }
+//   });
+// });
 
-  if(!request.body) return response.sendStatus(400);
+// // user get all tasks
+// app.post("/dashboard/todo/", jsonParser, function (request, response) {
+//
+//   if(!request.body) return response.sendStatus(400);
+//
+//   MongoClient.connect(url, function(err, db) {
+//     if (err) throw err;
+//     let dbo = db.db("DiplomaDB");
+//     dbo.collection("Tasks").find({executor: ""}, { projection: { _id: 0, title: 1, description: 2, status: 3, author: 4, authorRole: 5} }).toArray(function(err, result) {
+//
+//       if (err) throw err;
+//
+//       if (result !== null) {
+//         console.log(result);
+//         response.json(result);
+//         db.close();
+//       }
+//     });
+//   });
+// });
+//
+// // user get all tasks
+// app.post("/dashboard/inProgress/", jsonParser, function (request, response) {
+//
+//   if(!request.body) return response.sendStatus(400);
+//
+//   MongoClient.connect(url, function(err, db) {
+//     if (err) throw err;
+//     let dbo = db.db("DiplomaDB");
+//     dbo.collection("Tasks").find({executor: request.body.executor}, { projection: { _id: 0, title: 1, description: 2, status: 3, author: 4, authorRole: 5} }).toArray(function(err, result) {
+//
+//       if (err) throw err;
+//
+//       if (result !== null) {
+//         console.log(result);
+//         response.json(result);
+//         db.close();
+//       }
+//     });
+//   });
+// });
+//
+// // user update task
+// app.post("/dashboard/in-progress/", jsonParser, function (request, response) {
+//
+//   if(!request.body) return response.sendStatus(400);
+//
+//   let oldData = { title: request.body.userTask.title };
+//   let updateQuery = { $set: { executor: request.body.userTask.executor, status: request.body.userTask.status } };
+//   MongoClient.connect(url, function(err, db) {
+//     if (err) throw err;
+//     let dbo = db.db("DiplomaDB");
+//     dbo.collection("Tasks").updateOne(oldData, updateQuery, function(err, result) {
+//       if (err) throw err;
+//       if (result !== null) {
+//         db.close();
+//       }
+//     });
+//   });
+// });
+// ;
 
-  MongoClient.connect(url, function(err, db) {
-    if (err) throw err;
-    let dbo = db.db("DiplomaDB");
-    dbo.collection("Tasks").find({executor: ""}, { projection: { _id: 0, title: 1, description: 2, status: 3, author: 4, authorRole: 5} }).toArray(function(err, result) {
+// let dbo;
+// MongoClient.connect(url, function(err, db) {
+//   if (err) throw err;
+//   dbo = db.db("DiplomaDB");
+//   console.log('DB connection successful');
+// });
+//
+// io.on('connection', function (socket) {
+//   console.log('Backend has successfully connected!');
+//
+//   socket.on('ready', function (data) {
+//     console.log('in ready');
+//     dbo.collection("Tasks").find({executor: ""}, { projection: { _id: 0, title: 1, description: 2, status: 3, author: 4, authorRole: 5} }).toArray(function(err, result) {
+//       console.log('Inside collection find');
+//
+//       if (err) throw err;
+//
+//       if (result !== null) {
+//         console.log('Collection find result is not null', result);
+//         // response.json(result);
+//         socket.emit('news', result);
+//         socket.broadcast.emit('news', result);
+//         db.close();
+//       }
+//     });
+//   });
+//
+//   socket.on('news', function (data) {
+//     // this.msg1 = Object.values(data)[0];
+//     // console.log(this.msg);
+//     // if (this.msg1 !== null && this.msg1 === 'as') {
+//
+//     console.log(data);
+//
+//     // socket.emit('news', { ku: 'pup' });
+//     // socket.broadcast.emit('news', { ku: 'pup' });
+//     // } else {
+//     //   socket.emit('news', { hello: 'world' });
+//       // socket.broadcast.emit('news', { hello: 'world' });
+//     // }
+//   });
+// });
 
-      if (err) throw err;
+// app.post("/dashboard/todo/", jsonParser, function (request, response) {
+//
+//   if(!request.body) return response.sendStatus(400);
+//
+//   MongoClient.connect(url, function(err, db) {
+//     if (err) throw err;
+//     let dbo = db.db("DiplomaDB");
+//     dbo.collection("Tasks").find({executor: ""}, { projection: { _id: 0, title: 1, description: 2, status: 3, author: 4, authorRole: 5} }).toArray(function(err, result) {
+//
+//       if (err) throw err;
+//
+//       if (result !== null) {
+//         console.log(result);
+//         response.json(result);
+//         db.close();
+//       }
+//     });
+//   });
+// });
 
-      if (result !== null) {
-        console.log(result);
-        response.json(result);
-        db.close();
-      }
-    });
-  });
-});
 
-// user get all tasks
-app.post("/dashboard/inProgress/", jsonParser, function (request, response) {
-
-  if(!request.body) return response.sendStatus(400);
-
-  MongoClient.connect(url, function(err, db) {
-    if (err) throw err;
-    let dbo = db.db("DiplomaDB");
-    dbo.collection("Tasks").find({executor: request.body.executor}, { projection: { _id: 0, title: 1, description: 2, status: 3, author: 4, authorRole: 5} }).toArray(function(err, result) {
-
-      if (err) throw err;
-
-      if (result !== null) {
-        console.log(result);
-        response.json(result);
-        db.close();
-      }
-    });
-  });
-});
-
-// user update task
-app.post("/dashboard/in-progress/", jsonParser, function (request, response) {
-
-  if(!request.body) return response.sendStatus(400);
-
-  let oldData = { title: request.body.userTask.title };
-  let updateQuery = { $set: { executor: request.body.userTask.executor, status: request.body.userTask.status } };
-  MongoClient.connect(url, function(err, db) {
-    if (err) throw err;
-    let dbo = db.db("DiplomaDB");
-    dbo.collection("Tasks").updateOne(oldData, updateQuery, function(err, result) {
-      if (err) throw err;
-      if (result !== null) {
-        db.close();
-      }
-    });
-  });
-});
 
 app.listen(3000);

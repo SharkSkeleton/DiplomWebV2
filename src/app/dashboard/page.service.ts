@@ -13,6 +13,10 @@ export class PageService {
     this.subject.next({ text: message, allTasks: tasks });
   }
 
+  sendDoneTasks(message: string, tasks: Task[], marks: string[]) {
+    this.subject.next({ text: message, allTasks: tasks, allMarks: marks });
+  }
+
   clearMessage() {
     this.subject.next();
   }

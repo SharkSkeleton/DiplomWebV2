@@ -24,7 +24,7 @@
         <button mat-button>
           <mat-icon>stop</mat-icon>
         </button>
-        <button mat-button>
+        <button mat-button (click)="saveData(codeModel.value)">
           <mat-icon>save</mat-icon>
         </button>
         <button type="button" mat-button (click)="drawer.toggle()" class="showHideBtn">

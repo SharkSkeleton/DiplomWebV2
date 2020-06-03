@@ -16,34 +16,20 @@ export class ChatsComponent {
 
   favorites: Section[] = [
     {
-      name: 'Mishka',
+      name: 'Back-end',
       updated: new Date('1/1/20'),
     },
     {
-      name: 'Captain',
+      name: 'Front-end',
       updated: new Date('1/17/20'),
     },
     {
-      name: 'Own',
+      name: 'Full-stack',
       updated: new Date('1/28/20'),
-    }
-  ];
-  groups: Section[] = [
-    {
-      name: 'Group Angular',
-      updated: new Date('2/20/20'),
     },
     {
-      name: 'Group Java',
-      updated: new Date('1/18/20'),
-    },
-    {
-      name: 'Group NodeJs',
-      updated: new Date('3/19/20'),
-    },
-    {
-      name: 'Group Docker',
-      updated: new Date('5/5/20'),
+      name: 'QA',
+      updated: new Date('2/28/20'),
     }
   ];
 

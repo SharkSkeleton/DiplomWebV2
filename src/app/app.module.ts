@@ -54,6 +54,9 @@ import { StartaComponent } from './settings/starta/starta.component';
 import { CheckPopComponent } from './checks/check-pop/check-pop.component';
 import { AdminPanelHeaderComponent } from './admin-panel/admin-panel-header/admin-panel-header.component';
 import { AddUserAnswerComponent } from './admin-panel/add-user/add-user-answer/add-user-answer.component';
+import {SocketService} from './socket.service';
+import {SocketWorkSpace} from './socket-work-space.service';
+import {PostWorkspace} from './post-workspace.service';
 
 @NgModule({
   declarations: [
@@ -114,7 +117,7 @@ import { AddUserAnswerComponent } from './admin-panel/add-user/add-user-answer/a
     MatDialogModule,
   ],
 
-  providers: [HttpService, MatDatepickerModule, MatBottomSheet],
+  providers: [HttpService, MatDatepickerModule, MatBottomSheet, SocketService, SocketWorkSpace, PostWorkspace],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

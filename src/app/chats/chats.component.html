@@ -9,13 +9,6 @@
         <div mat-line>{{favorite.name}}</div>
         <div mat-line> {{favorite.updated | date}} </div>
       </mat-list-item>
-      <mat-divider></mat-divider>
-      <div mat-subheader>Groups</div>
-      <mat-list-item *ngFor="let group of groups" (click)="ChatOpen()">
-        <div mat-list-avatar class="header-image"></div>
-        <div mat-line>{{group.name}}</div>
-        <div mat-line> {{group.updated | date}} </div>
-      </mat-list-item>
     </mat-list>
   </mat-drawer>
 
