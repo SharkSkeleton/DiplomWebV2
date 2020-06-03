@@ -3,7 +3,7 @@ import {CodeModel} from '@ngstack/code-editor';
 import {MatBottomSheet, MatBottomSheetRef} from '@angular/material/bottom-sheet';
 import {BottomSheetComponent} from './bottom-sheet/bottom-sheet.component';
 import {SocketWorkSpace} from '../socket-work-space.service';
-import {PostWorkspace} from '../post-workspace.service';
+import {PostWorkspaceService} from '../post-workspace.service';
 import {User} from '../user';
 
 @Component({
@@ -14,7 +14,7 @@ import {User} from '../user';
 export class WorkspaceComponent implements OnInit, OnDestroy {
 
   // tslint:disable-next-line:variable-name
-  constructor(private _bottomSheet: MatBottomSheet, private socketService: SocketWorkSpace, private httpService: PostWorkspace) {
+  constructor(private _bottomSheet: MatBottomSheet, private socketService: SocketWorkSpace, private httpService: PostWorkspaceService) {
   }
 
   theme = 'vs-light';
@@ -69,13 +69,14 @@ export class WorkspaceComponent implements OnInit, OnDestroy {
 
   openBottomSheet(): void {
     this.httpService.postSend('5ed74eaa045af72d943c6a5e', 'Sasha').subscribe(
-      (data) => { console.log(data); this.socketService.connect(); },
+      (data) => { console.log(data);  },
       error => console.log(error)
     );
-    this.socketService.sendMessage('5ed74eaa045af72d943c6a5e', 'Sasha').subscribe(data =>
-    console.log(data));
+    // this.socketService.sendMessage('5ed74eaa045af72d943c6a5e', 'Sasha').subscribe(data =>
+    // console.log(data));
     this._bottomSheet.open(BottomSheetComponent);
   }
+  // this.socketService.connect();
 
   ngOnDestroy(): void {
     this.socketService.disconnect();

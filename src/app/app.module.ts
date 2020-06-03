@@ -56,7 +56,7 @@ import { AdminPanelHeaderComponent } from './admin-panel/admin-panel-header/admi
 import { AddUserAnswerComponent } from './admin-panel/add-user/add-user-answer/add-user-answer.component';
 import {SocketService} from './socket.service';
 import {SocketWorkSpace} from './socket-work-space.service';
-import {PostWorkspace} from './post-workspace.service';
+import {PostWorkspaceService} from './post-workspace.service';
 
 @NgModule({
   declarations: [
@@ -117,7 +117,7 @@ import {PostWorkspace} from './post-workspace.service';
     MatDialogModule,
   ],
 
-  providers: [HttpService, MatDatepickerModule, MatBottomSheet, SocketService, SocketWorkSpace, PostWorkspace],
+  providers: [HttpService, MatDatepickerModule, MatBottomSheet, SocketService, SocketWorkSpace, PostWorkspaceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
